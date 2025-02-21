@@ -533,11 +533,7 @@ Okay it was a bad path. the script was being executed from the TLD and the paths
 Fixed and successfully compiled.
 Test run in kmer mode also was successful. For some reason it does not work if the output is not within the project dir. I will just move everything after it successfully runs.
 
-Successful test run:
-
-```bash
-
-```
+***
 
 Hm. It still has the error when run with a lot of params. Works as above for simple sets though.
 
