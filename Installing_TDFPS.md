@@ -532,3 +532,42 @@ Okay it was a bad path. the script was being executed from the TLD and the paths
 
 Fixed and successfully compiled.
 Test run in kmer mode also was successful. For some reason it does not work if the output is not within the project dir. I will just move everything after it successfully runs.
+
+Successful test run:
+
+```bash
+
+```
+
+Hm. It still has the error when run with a lot of params. Works as above for simple sets though.
+
+```bash
+root@a9c164bf67a1:/opt/TDFPS# python3.7 selectBarcodeSeq.py --length 20 \
+    --qsize 10000000 \
+    --outdir 20bp_q10M_t10_pco95_r10prom \
+    --threshold 10 \
+    --thread-num 18 \
+    --mode kmer \
+    --seed 318 \
+    --training-precison-cutoff 0.95 \
+    --kit dna-r10-prom
+######Initial selection######
+######End selection! Total time: 156.051472s######
+
+
+######10000000 noise nanopore signals are being generated######
+[set_profile::INFO] dna-r10-prom is 5kHz from squigulator v0.3.0 onwards. Specify --sample-rate 4000 for old 4kHz.
+[set_profile::WARNING] Parameters and models for dna-r10-prom 5khz are still crude. If you have good modification-free data, please share! At src/sim.c:165
+[INFO] sim_main: Using random seed: 1740171849
+[init_core::INFO] builtin DNA R10 nucleotide model loaded
+[INFO] load_ref: Loaded 10000000 reference sequences with total length 200.000000 Mbases
+[slow5_open_write::ERROR] Error opening file 'tempoutput/20mer_init_filter_results.slow5': No such file or directory. At src/slow5.c:391
+[init_core::ERROR] Error opening file tempoutput/20mer_init_filter_results.slow5!
+ At src/sim.c:344
+[slow5_open_with::ERROR] Error opening file 'tempoutput/20mer_init_filter_results.slow5': No such file or directory. At src/slow5.c:361
+Segmentation fault (core dumped)
+```
+
+it may be as simple as tempoutput needing to be manually created.. what in the world.
+
+UPDATE: that was it, hfs.
