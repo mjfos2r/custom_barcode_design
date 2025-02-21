@@ -448,8 +448,8 @@ docker run --rm \
   -it mjfos2r/tdfps-designer
 # in container:
 python3.7 selectBarcodeSeq.py --length 20 \
-    --qsize 1000000 \
-    --outdir /data/20bp_q100M_t10_pco95_r10prom \
+    --qsize 10000000 \
+    --outdir 20bp_q10M_t10_pco95_r10prom \
     --threshold 10 \
     --thread-num 18 \
     --mode kmer \
@@ -527,3 +527,8 @@ Cool now we have path issues!
 #14 DONE 151.1s
 ```
 Let's make sure that compile.sh is being called from the correct directory.
+
+Okay it was a bad path. the script was being executed from the TLD and the paths were as if it was executed from within scripts.
+
+Fixed and successfully compiled.
+Test run in kmer mode also was successful. For some reason it does not work if the output is not within the project dir. I will just move everything after it successfully runs.
