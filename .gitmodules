@@ -1,0 +1,3 @@
+[submodule "TDFPSDesigner"]
+	path = TDFPSDesigner
+	url = https://github.com/mjfos2r/TDFPSDesigner.git
