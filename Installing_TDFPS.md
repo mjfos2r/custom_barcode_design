@@ -511,3 +511,5 @@ Wonderful. Time to check the version of nvcc since pre-11.1 SM_86 isn't valid. M
 It's definitely because the -arch=sm_86 and ...,code=SM_86 are not the same case. will rebuild now.
 
 You know what? I'm just gonna pull that whole arch nonsense out. compile at the simplest level.
+
+ugh.
