@@ -513,3 +513,17 @@ It's definitely because the -arch=sm_86 and ...,code=SM_86 are not the same case
 You know what? I'm just gonna pull that whole arch nonsense out. compile at the simplest level.
 
 ugh.
+
+Cool now we have path issues!
+
+```bash
+#14 150.4 cc1plus: fatal error: ../cuda/CalDTWDistMatrixMNSigroot.cu: No such file or directory
+#14 150.4 compilation terminated.
+#14 150.4 cc1plus: fatal error: ../cuda/CalDTWDistMatrixMN.cu: No such file or directory
+#14 150.4 compilation terminated.
+#14 150.4 cc1plus: fatal error: ../cuda/FpsCudaDTWThreshold.cu: No such file or directory
+#14 150.4 compilation terminated.
+#14 150.4 compile finished!
+#14 DONE 151.1s
+```
+Let's make sure that compile.sh is being called from the correct directory.
