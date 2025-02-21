@@ -424,7 +424,7 @@ Okay groovy. Now let's expand the dockerfile so that we can compile the cuda C (
 
 The GPU that we have is an `A800 80GB` which is named: `GA100`
 
-per the first resource above, that means we need to use `-arch=sm_86 -gencode=arch=compute_86,code=SM_86`
+per the first resource above, that means we need to use `-arch=sm_86 -gencode=arch=compute_86,code=sm_86`
 I'm adding this to the compilation commands provided by the original authors.
 
 Great. Container is being built as I type. Will push to dockerhub and test on Prom ASAP. Till then I'm grabbing lunch.
@@ -490,3 +490,20 @@ python3.7 selectBarcodeSeq.py \
 Segmentation fault (core dumped)
 ```
 
+Changed the way that tempdirs are made in the selectBarcode script. rebuilding the container.
+
+Hoorah.
+
+I saw an error in slow5lib compilation race by at the speed of light, using the following to log the build.
+
+```bash
+docker build --no-cache --progress=plain -t mjfos2r/tdfps-designer . >build_log_$(date +"%Y-%m-%d").log 2>&1
+```
+
+Ok cool, here's one of those errors:
+
+```{bash}
+nvcc fatal   : Unsupported gpu architecture 'SM_86'
+```
+
+Wonderful. Time to check the version of nvcc since pre-11.1 SM_86 isn't valid. Maybe it needs to be lowercase? let's try lowercase.
