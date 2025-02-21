@@ -173,13 +173,13 @@ Let's test the installation and see what we get!
 ```bash
 >python3.7 selectBarcodeSeq.py --length 10 \
         --qsize 10000 \
-        --outdir test_kmer_mjf \
+        --outdir /data/test_kmer_mjf \
         --threshold 10 \
         --thread-num 8 \
         --mode kmer \
         --seed 15 \
         --training-precison-cutoff 0.95 \
-        --kit dna-r10-min
+        --kit dna-r10-prom
 ######Initial selection######
 ######End selection! Total time: 0.124424s######
 
@@ -457,3 +457,36 @@ python3.7 selectBarcodeSeq.py --length 20 \
     --training-precison-cutoff 0.95 \
     --kit dna-r10-prom
 ```
+
+***
+
+New Error just Dropped!
+
+```{bash}
+python3.7 selectBarcodeSeq.py \
+  --length 10 \
+  --qsize 10000 \
+  --outdir test_kmer_mjf \
+  --threshold 10 \
+  --thread-num 8 \
+  --mode kmer \
+  --seed 15 \
+  --training-precison-cutoff 0.95 \
+  --kit dna-r10-min
+######Initial selection######
+######End selection! Total time: 0.080455s######
+
+
+######10000 noise nanopore signals are being generated######
+[set_profile::INFO] dna-r10-min is 5kHz from squigulator v0.3.0 onwards. Specify --sample-rate 4000 for old 4kHz.
+[set_profile::WARNING] Parameters and models for dna-r10-min 5khz are still crude. If you have good modification-free data, please share! At src/sim.c:170
+[INFO] sim_main: Using random seed: 1740163021
+[init_core::INFO] builtin DNA R10 nucleotide model loaded
+[INFO] load_ref: Loaded 10000 reference sequences with total length 0.100000 Mbases
+[slow5_open_write::ERROR] Error opening file 'tempoutput/10mer_init_filter_results.slow5': No such file or directory. At src/slow5.c:391
+[init_core::ERROR] Error opening file tempoutput/10mer_init_filter_results.slow5!
+ At src/sim.c:344
+[slow5_open_with::ERROR] Error opening file 'tempoutput/10mer_init_filter_results.slow5': No such file or directory. At src/slow5.c:361
+Segmentation fault (core dumped)
+```
+
