@@ -36,7 +36,7 @@ So I need to install this via conda. I don't want to use conda but I have to. I 
 
 Though I will not be using the chinese mirrors of anaconda. I'll use the domestic mirrors. This is probably best practice?
 
-## Fixing TDFPS_Designer.yaml to *not* use chinese mirrors
+## ~~Fixing TDFPS_Designer.yaml to *not* use chinese mirrors~~ Deprecated. Snakes have been purged in favor of docker.
 
 Nothing against China but I think it's legitimately against the law to use them on the systems this will be run on? Using domestic anaconda mirrors just to be safe.
 
@@ -328,7 +328,7 @@ compressed
 ```
 
 So this is unable to be resolved quickly.
-Just need to wait for the programmers in China to get back to me.
+~~Just need to wait for the programmers in China to get back to me.~~ They did! Many thanks to github.com/junhaiqi for the **rapid** response!
 
 Hoorah. I'm going home.
 
@@ -336,7 +336,7 @@ Hoorah. I'm going home.
 
 # >>{MJF - 2025-02-21 - 11:45:30}<< #
 
-Code authors responded to my git issue and uploaded the cuda source! Now I can compile for my specific version of cuda runtime! Hoorah!
+~~Code authors~~ [junhaiqi](https://github.com/junhaiqi) responded to my git issue and uploaded the cuda source! Now I can compile for my specific version of cuda runtime! Hoorah!
 
 To be safe, let's check on the sequencer's cuda versions so that we can absolutely be sure that it's lining up with the container. (or the inverse rather)
 
@@ -511,6 +511,7 @@ Wonderful. Time to check the version of nvcc since pre-11.1 SM_86 isn't valid. M
 It's definitely because the -arch=sm_86 and ...,code=SM_86 are not the same case. will rebuild now.
 
 You know what? I'm just gonna pull that whole arch nonsense out. compile at the simplest level.
+>>Update 2025-02-25: It was absolutely an issue with being uppercase, it is probably best to compile for the specific GPU you want to run on.
 
 ugh.
 
@@ -531,7 +532,7 @@ Let's make sure that compile.sh is being called from the correct directory.
 Okay it was a bad path. the script was being executed from the TLD and the paths were as if it was executed from within scripts.
 
 Fixed and successfully compiled.
-Test run in kmer mode also was successful. For some reason it does not work if the output is not within the project dir. I will just move everything after it successfully runs.
+Test run in kmer mode also was successful. ~~For some reason it does not work if the output is not within the project dir. I will just move everything after it successfully runs.~~ red herring. it outputs to the mounted path just fine.
 
 ***
 
@@ -567,3 +568,5 @@ Segmentation fault (core dumped)
 it may be as simple as tempoutput needing to be manually created.. what in the world.
 
 UPDATE: that was it, hfs.
+
+#>{ MJF - 2025-Feb-21 }<#
