@@ -231,7 +231,7 @@ Okay, so since we need to use a GPU, we might as well throw this into a docker c
 2. we can just move this over to a new machine ezpz, I'm thinking we should make use of the A800 we have in-house.
 
 Okay, let's throw together our Dockerfile.
-We will use ~~debian:bookworm-slim~~ nvidia/cuda:12.3.1-base-debian12
+We will use ~~debian:bookworm-slim~~ nvidia/cuda:12.4.0-base-ubuntu22.04
 
 We need to make sure all of the deps are installed by apt.
 I also want to not use conda for this so that will be fun.
